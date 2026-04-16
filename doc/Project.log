@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.27)  16 APR 2026 23:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.27)  17 APR 2026 02:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/jarikarp/study/Machine-Learning-for-Wireless-Comunications-E7340/Project/doc/Project.tex
-(/home/jarikarp/study/Machine-Learning-for-Wireless-Comunications-E7340/Project/doc/Project.tex
+**/home/jarikarp/study/RCS/RadioChannelSense/doc/Project.tex
+(/home/jarikarp/study/RCS/RadioChannelSense/doc/Project.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (./IEEEtran.cls
@@ -529,43 +529,43 @@ Package hyperref Info: Link coloring OFF on input line 16.
 \@outlinefile=\write3
 \openout3 = `Project.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 37.
+LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/ot1minntx.fd
 File: ot1minntx.fd 2023/09/09 v1.1 font definition file for OT1/minntx
 )
-LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 37.
+LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 37.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 37.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 37.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 37.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 37.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 37.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 ) (./sections/02-background.tex) (./sections/04-otaniemi.tex
@@ -576,7 +576,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
-<pictures/01_generate_dataset/scene_with_devices.png, id=155, 549.7338pt x 426.393pt>
+<pictures/01_generate_dataset/scene_with_devices.png, id=158, 549.7338pt x 426.393pt>
 File: pictures/01_generate_dataset/scene_with_devices.png Graphic file (type png)
 <use pictures/01_generate_dataset/scene_with_devices.png>
 Package pdftex.def Info: pictures/01_generate_dataset/scene_with_devices.png  used on input line 81.
@@ -602,12 +602,12 @@ Overfull \hbox (16.8391pt too wide) in paragraph at lines 105--115
  []
 
 ) (./sections/05-radio.tex) (./sections/06-dataset.tex [2 <./pictures/01_generate_dataset/scene_with_devices.png>]
-<pictures/tommi/Simulated_environment.png, id=180, 416.757pt x 284.262pt>
+<pictures/tommi/Simulated_environment.png, id=183, 416.757pt x 284.262pt>
 File: pictures/tommi/Simulated_environment.png Graphic file (type png)
 <use pictures/tommi/Simulated_environment.png>
 Package pdftex.def Info: pictures/tommi/Simulated_environment.png  used on input line 27.
 (pdftex.def)             Requested size: 201.60077pt x 137.50688pt.
-<pictures/tommi/Illustration_how_antenna_orientation_matters_when_wide_beams_are_used.png, id=182, 386.6445pt x 230.0595pt>
+<pictures/tommi/Illustration_how_antenna_orientation_matters_when_wide_beams_are_used.png, id=185, 386.6445pt x 230.0595pt>
 File: pictures/tommi/Illustration_how_antenna_orientation_matters_when_wide_beams_are_used.png Graphic file (type png)
 <use pictures/tommi/Illustration_how_antenna_orientation_matters_when_wide_beams_are_used.png>
 Package pdftex.def Info: pictures/tommi/Illustration_how_antenna_orientation_matters_when_wide_beams_are_used.png  used on input line 76.
@@ -623,7 +623,7 @@ Underfull \hbox (badness 3312) in paragraph at lines 91--94
  []
 
 [3 <./pictures/tommi/Simulated_environment.png> <./pictures/tommi/Illustration_how_antenna_orientation_matters_when_wide_beams_are_used.png>]
-<pictures/tommi/Workflow_for_creating_the_features.png, id=196, 317.38576pt x 176.45924pt>
+<pictures/tommi/Workflow_for_creating_the_features.png, id=199, 317.38576pt x 176.45924pt>
 File: pictures/tommi/Workflow_for_creating_the_features.png Graphic file (type png)
 <use pictures/tommi/Workflow_for_creating_the_features.png>
 Package pdftex.def Info: pictures/tommi/Workflow_for_creating_the_features.png  used on input line 124.
@@ -644,37 +644,37 @@ Underfull \hbox (badness 7814) in paragraph at lines 17--21
  []
 
 [4 <./pictures/tommi/Workflow_for_creating_the_features.png>]
-<pictures/03_localization/wknn_cdf_1.png, id=214, 599.3592pt x 360.8682pt>
+<pictures/03_localization/wknn_cdf_1.png, id=217, 599.3592pt x 360.8682pt>
 File: pictures/03_localization/wknn_cdf_1.png Graphic file (type png)
 <use pictures/03_localization/wknn_cdf_1.png>
 Package pdftex.def Info: pictures/03_localization/wknn_cdf_1.png  used on input line 100.
 (pdftex.def)             Requested size: 252.0pt x 151.72879pt.
-<pictures/03_localization/wknn_error_heatmap.png, id=215, 350.7504pt x 336.7782pt>
+<pictures/03_localization/wknn_error_heatmap.png, id=218, 350.7504pt x 336.7782pt>
 File: pictures/03_localization/wknn_error_heatmap.png Graphic file (type png)
 <use pictures/03_localization/wknn_error_heatmap.png>
 Package pdftex.def Info: pictures/03_localization/wknn_error_heatmap.png  used on input line 107.
 (pdftex.def)             Requested size: 252.0pt x 241.97137pt.
-<pictures/03_localization/localization_error_cdf.png, id=216, 722.7pt x 433.62pt>
+<pictures/03_localization/localization_error_cdf.png, id=219, 722.7pt x 433.62pt>
 File: pictures/03_localization/localization_error_cdf.png Graphic file (type png)
 <use pictures/03_localization/localization_error_cdf.png>
 Package pdftex.def Info: pictures/03_localization/localization_error_cdf.png  used on input line 114.
 (pdftex.def)             Requested size: 252.0pt x 151.20026pt.
-<pictures/03_localization/localization_metrics_comparison.png, id=217, 1011.78pt x 361.35pt>
+<pictures/03_localization/localization_metrics_comparison.png, id=220, 1011.78pt x 361.35pt>
 File: pictures/03_localization/localization_metrics_comparison.png Graphic file (type png)
 <use pictures/03_localization/localization_metrics_comparison.png>
 Package pdftex.def Info: pictures/03_localization/localization_metrics_comparison.png  used on input line 124.
 (pdftex.def)             Requested size: 252.0pt x 90.00093pt.
-<pictures/03_localization/localization_error_heatmaps.png, id=218, 2601.72pt x 361.35pt>
+<pictures/03_localization/localization_error_heatmaps.png, id=221, 2601.72pt x 361.35pt>
 File: pictures/03_localization/localization_error_heatmaps.png Graphic file (type png)
 <use pictures/03_localization/localization_error_heatmaps.png>
 Package pdftex.def Info: pictures/03_localization/localization_error_heatmaps.png  used on input line 132.
 (pdftex.def)             Requested size: 516.0pt x 71.6622pt.
-<pictures/03_localization/nn_regression_training.png, id=221, 722.7pt x 289.08pt>
+<pictures/03_localization/nn_regression_training.png, id=224, 722.7pt x 289.08pt>
 File: pictures/03_localization/nn_regression_training.png Graphic file (type png)
 <use pictures/03_localization/nn_regression_training.png>
 Package pdftex.def Info: pictures/03_localization/nn_regression_training.png  used on input line 161.
 (pdftex.def)             Requested size: 252.0pt x 100.80016pt.
-<pictures/03_localization/cnn_regression_training.png, id=222, 578.16pt x 289.08pt>
+<pictures/03_localization/cnn_regression_training.png, id=225, 578.16pt x 289.08pt>
 File: pictures/03_localization/cnn_regression_training.png Graphic file (type png)
 <use pictures/03_localization/cnn_regression_training.png>
 Package pdftex.def Info: pictures/03_localization/cnn_regression_training.png  used on input line 169.
@@ -735,27 +735,27 @@ Underfull \hbox (badness 1783) in paragraph at lines 215--228
  []
 
 [6 <./pictures/03_localization/localization_metrics_comparison.png>]) (./sections/09-channel_charting.tex [7 <./pictures/03_localization/localization_error_heatmaps.png> <./pictures/03_localization/nn_regression_training.png> <./pictures/03_localization/cnn_regression_training.png>]
-<pictures/04_channel_charting/channel_charts_coloured_x.png, id=286, 1714.2444pt x 367.6134pt>
+<pictures/04_channel_charting/channel_charts_coloured_x.png, id=289, 1714.2444pt x 367.6134pt>
 File: pictures/04_channel_charting/channel_charts_coloured_x.png Graphic file (type png)
 <use pictures/04_channel_charting/channel_charts_coloured_x.png>
 Package pdftex.def Info: pictures/04_channel_charting/channel_charts_coloured_x.png  used on input line 91.
 (pdftex.def)             Requested size: 516.0pt x 110.65508pt.
-<pictures/04_channel_charting/channel_charts_coloured_y.png, id=287, 1714.2444pt x 367.6134pt>
+<pictures/04_channel_charting/channel_charts_coloured_y.png, id=290, 1714.2444pt x 367.6134pt>
 File: pictures/04_channel_charting/channel_charts_coloured_y.png Graphic file (type png)
 <use pictures/04_channel_charting/channel_charts_coloured_y.png>
 Package pdftex.def Info: pictures/04_channel_charting/channel_charts_coloured_y.png  used on input line 100.
 (pdftex.def)             Requested size: 516.0pt x 110.65508pt.
-<pictures/04_channel_charting/channel_charts_comparison.png, id=288, 1713.7626pt x 367.6134pt>
+<pictures/04_channel_charting/channel_charts_comparison.png, id=291, 1713.7626pt x 367.6134pt>
 File: pictures/04_channel_charting/channel_charts_comparison.png Graphic file (type png)
 <use pictures/04_channel_charting/channel_charts_comparison.png>
 Package pdftex.def Info: pictures/04_channel_charting/channel_charts_comparison.png  used on input line 107.
 (pdftex.def)             Requested size: 516.0pt x 110.68312pt.
-<pictures/04_channel_charting/pca_explained_variance.png, id=289, 578.16pt x 289.08pt>
+<pictures/04_channel_charting/pca_explained_variance.png, id=292, 578.16pt x 289.08pt>
 File: pictures/04_channel_charting/pca_explained_variance.png Graphic file (type png)
 <use pictures/04_channel_charting/pca_explained_variance.png>
 Package pdftex.def Info: pictures/04_channel_charting/pca_explained_variance.png  used on input line 116.
 (pdftex.def)             Requested size: 252.0pt x 126.0002pt.
-<pictures/TSNE_perplexities.png, id=294, 1355.3034pt x 451.9284pt>
+<pictures/TSNE_perplexities.png, id=297, 1355.3034pt x 451.9284pt>
 File: pictures/TSNE_perplexities.png Graphic file (type png)
 <use pictures/TSNE_perplexities.png>
 Package pdftex.def Info: pictures/TSNE_perplexities.png  used on input line 189.
@@ -806,18 +806,18 @@ Package rerunfilecheck Info: File `Project.out' has not changed.
 (rerunfilecheck)             Checksum: B2C9140621D0BEA40DD7ABBFD3750595;4827.
  ) 
 Here is how much of TeX's memory you used:
- 13977 strings out of 476106
- 212783 string characters out of 5793933
- 1954975 words of memory out of 5000000
- 35612 multiletter control sequences out of 15000+600000
- 640149 words of font info for 194 fonts, out of 8000000 for 9000
+ 13997 strings out of 476106
+ 213019 string characters out of 5793933
+ 1955975 words of memory out of 5000000
+ 35632 multiletter control sequences out of 15000+600000
+ 648845 words of font info for 214 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 75i,12n,79p,571b,532s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,535b,532s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
-Output written on Project.pdf (11 pages, 5553015 bytes).
+Output written on Project.pdf (11 pages, 5553333 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 360 compressed objects within 4 object streams
+ 436 PDF objects out of 1000 (max. 8388607)
+ 362 compressed objects within 4 object streams
  97 named destinations out of 1000 (max. 500000)
  313 words of extra memory for PDF output out of 10000 (max. 10000000)
 
