@@ -1,0 +1,181 @@
+193158: 01_generate_dataset.py  started
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776281519.404951 3319754 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776281519.412381 3319754 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776281519.429966 3319754 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281519.429996 3319754 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281519.430000 3319754 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281519.430003 3319754 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+Scene : Otaniemi_small/Otaniemi_small.xml
+Output: /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small
+No GPU — running on CPU
+Mitsuba variant: llvm_ad_mono_polarized
+Scene loaded: Otaniemi_small/Otaniemi_small.xml
+Added 9 transmitters.
+UE at [18.75, 12.5, 1.25]
+Scene render saved → Otaniemi_small-results-2026-04-15-193158/pictures/01_generate_dataset/scene_render.png
+Scene with devices saved → Otaniemi_small-results-2026-04-15-193158/pictures/01_generate_dataset/scene_with_devices.png
+OFDM: 3168 sub-carriers, Δf=30 kHz, fc=3.600 GHz
+PathSolver complete.
+  Paths tau shape: (1, 9, 30)
+Scene with paths saved → Otaniemi_small-results-2026-04-15-193158/pictures/01_generate_dataset/scene_with_paths.png
+a shape: (1, 1, 9, 16, 30, 1)
+tau shape: (1, 9, 30)
+H shape: (1, 1, 1, 9, 16, 1, 3168)
+Plotting CIR: TX2 (27 valid paths).
+Saved → Otaniemi_small-results-2026-04-15-193158/sionna_dataset.h5  (3.39 MB)
+Saved → Otaniemi_small-results-2026-04-15-193158/sionna_paths.csv  (2880 paths, 97.9 KB)
+Mitsuba scene loaded: Otaniemi_small/Otaniemi_small.xml
+Mitsuba traced 440 paths (TX0 → UE).
+Plotted 440 valid paths.
+Saved → Otaniemi_small-results-2026-04-15-193158/mitsuba_dataset.h5  (0.02 MB)
+Saved → Otaniemi_small-results-2026-04-15-193158/mitsuba_paths.csv  (440 paths, 26.4 KB)
+Report → Otaniemi_small-results-2026-04-15-193158/01_generate_dataset_report.md
+193242: 01_generate_dataset.py  ended
+193242: 02_rt_comparison.py  started
+2026-04-15 19:32:44.649889: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 19:32:44.651169: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 19:32:44.657158: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 19:32:44.675033: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776281564.705127 3321012 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776281564.714012 3321012 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776281564.737251 3321012 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281564.737296 3321012 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281564.737300 3321012 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281564.737302 3321012 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 19:32:44.744123: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Scene : Otaniemi_small/Otaniemi_small.xml
+Data  : /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small
+Sionna  a shape  : (1, 1, 9, 16, 30, 1)
+Sionna  tau shape: (1, 9, 30)
+Mitsuba paths: 440
+Sionna best TX: 2, 27 valid paths
+     Tool  Num Paths  Min Delay (ns)  Max Delay (ns)  Mean Delay (ns)  Std Delay (ns)  Min Amplitude  Max Amplitude  Mean Amplitude  Min Gain (dB)  Max Gain (dB)  Mean Gain (dB)  Total Gain (dB)
+Sionna RT         27        5.475925     1944.241943       745.218201      537.052124   1.564547e-07       0.000051        0.000007    -136.112228     -85.871185     -111.196236       -83.494433
+  Mitsuba        440      215.797538     1956.072787       359.106089      193.640846   3.280606e-09       0.015457        0.000188    -169.680918     -36.217344      -90.958306       -35.616676
+
+RMS Delay Spread — Sionna: 191.24 ns  |  Mitsuba: 24.83 ns
+Report → Otaniemi_small-results-2026-04-15-193158/02_rt_comparison_report.md
+193255: 02_rt_comparison.py  ended
+193255: 03_localization.py  started
+2026-04-15 19:32:56.966402: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 19:32:56.967211: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 19:32:56.972076: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 19:32:56.985460: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776281577.008094 3321433 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776281577.014628 3321433 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776281577.032223 3321433 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281577.032251 3321433 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281577.032253 3321433 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776281577.032255 3321433 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 19:32:57.037628: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 19:37:13.719896: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Scene : Otaniemi_small/Otaniemi_small.xml
+Data  : /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small
+Loaded fingerprint cache: (3186, 3690)
+Split: random  |  Train: 2230  |  Test: 956  |  Features: 3690
+wKNN  (k=3, p=3)  MAE=13.74 m  RMSE=21.04 m  Median=7.98 m  P90=33.38 m  P95=45.12 m
+wKNN C2F  (k=9, p=3, R=5 m, fallback=431/956)  MAE=13.77 m  RMSE=21.07 m  P90=33.41 m
+NN Reg   MAE=9.53 m  RMSE=12.34 m  Median=7.90 m  P90=17.11 m  P95=20.75 m
+NN Clf   MAE=68.32 m  RMSE=78.10 m  Accuracy=0.0%
+CNN Reg  MAE=10.56 m  RMSE=14.21 m  P90=20.30 m  P95=28.49 m  [410 feat/TX × 9 TX]
+Ensemble (members=5)  MAE=10.29 m  RMSE=13.65 m  Median=8.00 m  P90=19.90 m  P95=27.03 m
+
+======================================================================
+LOCALIZATION SUMMARY
+======================================================================
+Method                    MAE    RMSE   Median     P90     P95
+---------------------------------------------------------------
+  WKNN (IDW)            13.74   21.04     7.98   33.38   45.12
+  WKNN C2F              13.77   21.07     8.01   33.41   45.94
+  NN Regression          9.53   12.34     7.90   17.11   20.75
+  NN Classification     68.32   78.10    62.52  122.75  134.68
+  CNN Regression        10.56   14.21     7.85   20.30   28.49
+  Ensemble              10.29   13.65     8.00   19.90   27.03
+Saved → Otaniemi_small-results-2026-04-15-193158/fingerprint_localization_results.csv
+Saved → Otaniemi_small-results-2026-04-15-193158/fingerprint_localization_summary.json
+Report → Otaniemi_small-results-2026-04-15-193158/03_localization_report.md
+200214: 03_localization.py  ended
+200214: 04_channel_charting.py  started
+2026-04-15 20:06:15.255346: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 20:06:15.256415: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 20:06:15.262352: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 20:06:15.279273: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776283575.307006 3513500 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776283575.315594 3513500 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776283575.339968 3513500 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776283575.340012 3513500 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776283575.340017 3513500 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776283575.340021 3513500 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 20:06:15.347134: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 20:06:18.221563: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Scene : Otaniemi_small/Otaniemi_small.xml
+Data  : /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small
+Fingerprints: (3186, 3690)
+Dataset ready: N=3186 samples, 3690 features
+PCA: TW=0.7058  CT=0.9315  KS=0.5144
+  t-SNE input: 50-D PCA projection
+  t-SNE perplexity=5: TW=0.9062  KS=0.4586
+  t-SNE perplexity=15: TW=0.9159  KS=0.4166
+  t-SNE perplexity=30: TW=0.9178  KS=0.4505
+  t-SNE perplexity=50: TW=0.9172  KS=0.5346
+t-SNE (best perp=30): TW=0.9178  CT=0.9576  KS=0.4505  NNLE=8.35 m
+AE: TW=0.8495  CT=0.9197  KS=0.7705  NNLE=22.00 m
+  UMAP input: 50-D PCA projection
+  UMAP n_neighbors=5: TW=0.8963  KS=0.8611
+  UMAP n_neighbors=10: TW=0.8958  KS=0.8700
+  UMAP n_neighbors=20: TW=0.8951  KS=0.8840
+  UMAP n_neighbors=30: TW=0.8912  KS=0.8982
+UMAP (best n=5): TW=0.8963  CT=0.9139  KS=0.8611  NNLE=10.92 m
+
+======================================================================
+CHANNEL CHARTING SUMMARY
+======================================================================
+         Method TW (↑ better) CT (↑ better) KS (↓ better) NNLE m (↓ better)
+            PCA        0.7058        0.9315        0.5144               n/a
+t-SNE (perp=30)        0.9178        0.9576        0.4505              8.35
+    Autoencoder        0.8495        0.9197        0.7705             22.00
+     UMAP (n=5)        0.8963        0.9139        0.8611             10.92
+
+Saved → Otaniemi_small-results-2026-04-15-193158/channel_charting_metrics.csv
+────────────────────────────────────────────────────────────
+METRIC WINNERS
+────────────────────────────────────────────────────────────
+  Best Trustworthiness (TW ↑)  : t-SNE (perp=30)
+  Best Continuity       (CT ↑)  : t-SNE (perp=30)
+  Best KS distance      (KS ↓)  : t-SNE (perp=30)
+  Best NNLE             (↓ m)   : t-SNE (perp=30)
+  Best overall avg rank         : t-SNE (perp=30)
+────────────────────────────────────────────────────────────
+
+TW range : 0.7058 – 0.9178  (1.0 = ideal)
+CT range : 0.9139 – 0.9576  (1.0 = ideal)
+KS range : 0.4505 – 0.8611  (0.0 = ideal)
+NNLE range : 8.35 – 22.00 m  (0 = ideal)
+
+  PCA
+    TW=0.7058 (poor)  CT=0.9315 (good)  KS=0.5144 (poor)
+
+  t-SNE (perp=30) ← best overall
+    TW=0.9178 (good)  CT=0.9576 (good)  KS=0.4505 (poor)  NNLE=8.35 m
+
+  Autoencoder
+    TW=0.8495 (ok)  CT=0.9197 (good)  KS=0.7705 (poor)  NNLE=22.00 m
+
+  UMAP (n=5)
+    TW=0.8963 (ok)  CT=0.9139 (good)  KS=0.8611 (poor)  NNLE=10.92 m
+Saved channel charting cache → Otaniemi_small-results-2026-04-15-193158/channel_charting_dataset.h5
+Report → Otaniemi_small-results-2026-04-15-193158/04_channel_charting_report.md
+201334: 04_channel_charting.py  ended
+Generating PDF report for scene 'Otaniemi_small' from /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small-results-2026-04-15-193158
+  + 01_generate_dataset_report.md
+  + 02_rt_comparison_report.md
+  + 03_localization_report.md
+  + 04_channel_charting_report.md
+PDF saved → /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small-results-2026-04-15-193158/Otaniemi_small_analysis_report.pdf  (4387.5 KB)

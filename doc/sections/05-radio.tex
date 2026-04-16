@@ -1,0 +1,37 @@
+\section{Radio Access Configuration}
+\label{sec:radio}
+
+The simulated deployment targets 5G NR Band~n78 at $f_c = 3.6\,\text{GHz}$
+(primary Sub-6\,GHz micro-cell allocation in 3GPP~TS~38.104~\cite{3gpp_ts38104,3gpp_nr_channel}).
+All nine rooftop sites share the RF and antenna configuration in Table~\ref{tab:radio_spec}.
+
+\begin{table}[htbp]
+  \caption{Radio link and OFDM configuration (per BS site)}
+  \label{tab:radio_spec}
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    Parameter & Value \\
+    \midrule
+    Operating band          & 5G NR n78 ($3.3$--$3.8\,\text{GHz}$) \\
+    Carrier frequency       & $f_c = 3.6\,\text{GHz}$ \\
+    Subcarrier spacing      & $\Delta f = 30\,\text{kHz}$ (numerology $\mu=1$) \\
+    FFT size / subcarriers  & $N_{\mathrm{FFT}} = 3168$ \\
+    Transmit power          & $+40\,\text{dBm}$ per site \\
+    BS antenna array        & $4\times4$ planar, 16 elements,
+                              TR~38.901 pattern \\
+    BS antenna height       & $19\,\text{m}$ \\
+    UE antenna              & Isotropic, 1 element \\
+    UE antenna height       & $1.25\,\text{m}$ \\
+    Max reflection depth    & 4 \\
+    Max ray depth           & 4 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The BS uses a $4\times4$ dual-polarised TR~38.901 planar array (16 elements, half-wavelength spacing)
+for angular diversity and cross-BS UE fingerprint distinguishability~\cite{hoydis2023sionna_rt,dahlman2018_5gnr}.
+The UE is modelled with a single isotropic antenna.
+Ray tracing retains the 30 strongest paths per BS--UE link (up to 4 reflection interactions).
+The OFDM transfer function is evaluated on the full $N_{\mathrm{FFT}}=3168$ subcarrier grid
+and downsampled for CSI fingerprints in Sections~\ref{sec:localization}--\ref{sec:channel_charting}.

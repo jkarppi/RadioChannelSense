@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\caption{Mitsuba dataset structure (HDF5) --- reference UE, 440 Monte Carlo paths}
+\label{tab:mitsuba_dataset}
+\centering
+\begin{tabular}{lll}
+\toprule
+Path & Shape & DType \\
+\midrule
+CIR/a\_imag                          & $(440,)$   & float64 \\
+CIR/a\_real                          & $(440,)$   & float64 \\
+CIR/tau\_ns                          & $(440,)$   & float64 \\
+CIR/tau\_s                           & $(440,)$   & float64 \\
+frequency\_domain/H\_gain\_dB        & $(3168,)$  & float64 \\
+frequency\_domain/H\_imag            & $(3168,)$  & float64 \\
+frequency\_domain/H\_magnitude       & $(3168,)$  & float64 \\
+frequency\_domain/H\_phase\_deg      & $(3168,)$  & float64 \\
+frequency\_domain/H\_real            & $(3168,)$  & float64 \\
+frequency\_domain/subcarrier\_freq\_Hz & $(3168,)$ & float64 \\
+locations/bs\_positions              & $(9, 3)$   & float64 \\
+locations/ue\_positions              & $(1, 3)$   & float64 \\
+paths/amplitude\_abs                 & $(440,)$   & float64 \\
+paths/az\_aoa\_deg                   & $(440,)$   & float64 \\
+paths/az\_aod\_deg                   & $(440,)$   & float64 \\
+paths/channel\_gain\_dB              & $(440,)$   & float64 \\
+paths/channel\_gain\_linear          & $(440,)$   & float64 \\
+paths/delay\_ns                      & $(440,)$   & float64 \\
+paths/el\_aoa\_deg                   & $(440,)$   & float64 \\
+paths/el\_aod\_deg                   & $(440,)$   & float64 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,28 @@
+\frametitle{Channel Charting Results}
+
+\vspace{-0.2cm}
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Method & TW $\uparrow$ & CT $\uparrow$ & KS $\downarrow$ & NNLE (m) $\downarrow$ \\
+\midrule
+PCA & 0.706 & 0.932 & 0.514 & n/a \\
+\textbf{t-SNE (30)} & \textbf{0.918} & \textbf{0.958} & \textbf{0.451} & \textbf{8.35} \\
+Autoencoder & 0.850 & 0.920 & 0.771 & 22.00 \\
+UMAP ($n=5$) & 0.896 & 0.914 & 0.861 & 10.92 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{-0.3cm}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering
+\includegraphics[width=1.0\columnwidth]{pictures/04_channel_charting/channel_charts_comparison.png}
+
+\column{0.5\textwidth}
+\centering
+\includegraphics[width=1.0\columnwidth]{pictures/04_channel_charting/pca_explained_variance.png}
+\end{columns}

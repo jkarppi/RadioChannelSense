@@ -1,0 +1,236 @@
+<scene version="2.1.0">
+
+  <!-- Materials: itu_ prefix → auto-converted to itu-radio-material by Sionna -->
+  <bsdf type="diffuse" id="itu_concrete">
+    <rgb name="reflectance" value="0.92, 0.88, 0.80"/>
+  </bsdf>
+
+  <bsdf type="diffuse" id="itu_glass">
+    <rgb name="reflectance" value="0.75, 0.90, 0.95"/>
+  </bsdf>
+
+  <bsdf type="diffuse" id="itu_metal">
+    <rgb name="reflectance" value="0.35, 0.38, 0.42"/>
+  </bsdf>
+
+  <bsdf type="diffuse" id="itu_wood">
+    <rgb name="reflectance" value="0.72, 0.50, 0.20"/>
+  </bsdf>
+
+  <!-- Room envelope (concrete) — ceiling excluded: see note above -->
+  <shape type="ply" id="floor" name="floor">
+    <string name="filename" value="ply/floor.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="wall_south_left" name="wall_south_left">
+    <string name="filename" value="ply/wall_south_left.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="wall_south_right" name="wall_south_right">
+    <string name="filename" value="ply/wall_south_right.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="wall_south_header" name="wall_south_header">
+    <string name="filename" value="ply/wall_south_header.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+  </shape>
+
+  <!-- East wall (metal roller door) -->
+  <shape type="ply" id="wall_east" name="wall_east">
+    <string name="filename" value="ply/wall_east.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+
+  <!-- Glass walls -->
+  <shape type="ply" id="wall_north" name="wall_north">
+    <string name="filename" value="ply/wall_north.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_glass" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="wall_west" name="wall_west">
+    <string name="filename" value="ply/wall_west.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_glass" name="bsdf"/>
+  </shape>
+
+  <!-- Metal doors -->
+  <shape type="ply" id="door_left" name="door_left">
+    <string name="filename" value="ply/door_left.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="door_right" name="door_right">
+    <string name="filename" value="ply/door_right.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+
+  <!-- Metal chairs -->
+  <shape type="ply" id="chair_01" name="chair_01">
+    <string name="filename" value="ply/chair_01.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_02" name="chair_02">
+    <string name="filename" value="ply/chair_02.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_03" name="chair_03">
+    <string name="filename" value="ply/chair_03.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_04" name="chair_04">
+    <string name="filename" value="ply/chair_04.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_05" name="chair_05">
+    <string name="filename" value="ply/chair_05.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_06" name="chair_06">
+    <string name="filename" value="ply/chair_06.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_07" name="chair_07">
+    <string name="filename" value="ply/chair_07.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_08" name="chair_08">
+    <string name="filename" value="ply/chair_08.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_09" name="chair_09">
+    <string name="filename" value="ply/chair_09.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_10" name="chair_10">
+    <string name="filename" value="ply/chair_10.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_11" name="chair_11">
+    <string name="filename" value="ply/chair_11.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_12" name="chair_12">
+    <string name="filename" value="ply/chair_12.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_13" name="chair_13">
+    <string name="filename" value="ply/chair_13.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_14" name="chair_14">
+    <string name="filename" value="ply/chair_14.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_15" name="chair_15">
+    <string name="filename" value="ply/chair_15.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_16" name="chair_16">
+    <string name="filename" value="ply/chair_16.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_17" name="chair_17">
+    <string name="filename" value="ply/chair_17.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_18" name="chair_18">
+    <string name="filename" value="ply/chair_18.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_19" name="chair_19">
+    <string name="filename" value="ply/chair_19.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="chair_20" name="chair_20">
+    <string name="filename" value="ply/chair_20.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_metal" name="bsdf"/>
+  </shape>
+
+  <!-- Wood stage & tables -->
+  <shape type="ply" id="stage" name="stage">
+    <string name="filename" value="ply/stage.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_wood" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="table_1" name="table_1">
+    <string name="filename" value="ply/table_1.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_wood" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="table_2" name="table_2">
+    <string name="filename" value="ply/table_2.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_wood" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="table_3" name="table_3">
+    <string name="filename" value="ply/table_3.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_wood" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="table_4" name="table_4">
+    <string name="filename" value="ply/table_4.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_wood" name="bsdf"/>
+  </shape>
+
+  <!-- Ceiling area lights (concrete panels) -->
+  <shape type="ply" id="light_1" name="light_1">
+    <string name="filename" value="ply/light_1.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+    <emitter type="area">
+      <rgb name="radiance" value="84.0, 84.0, 84.0"/>
+    </emitter>
+  </shape>
+  <shape type="ply" id="light_2" name="light_2">
+    <string name="filename" value="ply/light_2.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+    <emitter type="area">
+      <rgb name="radiance" value="84.0, 84.0, 84.0"/>
+    </emitter>
+  </shape>
+  <shape type="ply" id="light_3" name="light_3">
+    <string name="filename" value="ply/light_3.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+    <emitter type="area">
+      <rgb name="radiance" value="84.0, 84.0, 84.0"/>
+    </emitter>
+  </shape>
+  <shape type="ply" id="light_4" name="light_4">
+    <string name="filename" value="ply/light_4.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="itu_concrete" name="bsdf"/>
+    <emitter type="area">
+      <rgb name="radiance" value="84.0, 84.0, 84.0"/>
+    </emitter>
+  </shape>
+
+</scene>

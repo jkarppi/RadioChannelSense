@@ -1,0 +1,31 @@
+# Feature Ablation Results
+
+**Sorted by:** wknn_mae (best → worst)
+
+| Combination | N_feat | Features ON | wKNN MAE | wKNN RMSE | wKNN P90 | C2F MAE | C2F RMSE | C2F P90 | NN MAE | NN RMSE | NN P90 | CNN MAE | CNN RMSE | CNN P90 | Best MAE | Best Method |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Solo_AoA ◄ | 36 | AoA |   7.76 |  13.56 |  15.45 |   —    |   —    |   —    |   7.79 |  11.25 |  15.24 |   7.48 |  11.49 |  16.39 |   7.48 | CNN Regression |
+| Light | 90 | TDoA+AoA+RSS+Rch |   8.00 |  15.68 |  14.80 |   —    |   —    |   —    |   6.58 |   9.68 |  12.76 |   7.29 |  10.29 |  14.83 |   6.58 | NN Regression |
+| No_OFDM_Light | 108 | TDoA+AoA+RSS+PL+Dly+Rch |   8.27 |  16.73 |  14.84 |   —    |   —    |   —    |   7.13 |  10.31 |  12.81 |   6.61 |   9.89 |  13.40 |   6.61 | CNN Regression |
+| Geometry | 81 | TDoA+AoA+Dly |   8.56 |  16.17 |  17.02 |   —    |   —    |   —    |   8.15 |  12.02 |  15.84 |   7.60 |  10.91 |  15.39 |   7.60 | CNN Regression |
+| No_OFDM | 135 | TDoA+AoA+RSS+PL+Dly+CovE+Rch |   9.70 |  18.23 |  18.63 |   —    |   —    |   —    |   7.54 |  11.18 |  14.61 |   7.48 |  10.70 |  15.23 |   7.48 | CNN Regression |
+| Solo_RSS | 9 | RSS |   9.94 |  20.18 |  25.62 |   —    |   —    |   —    |  11.05 |  18.07 |  20.80 |  12.21 |  19.31 |  26.54 |   9.94 | WKNN (IDW) |
+| Radio | 27 | RSS+PL+Rch |  10.61 |  21.74 |  28.75 |   —    |   —    |   —    |  12.86 |  20.34 |  26.36 |  10.66 |  19.37 |  24.30 |  10.61 | WKNN (IDW) |
+| No_PathLoss | 3681 | OFDM+TDoA+AoA+RSS+Dly+CovE+Rch |  13.36 |  20.49 |  31.95 |   —    |   —    |   —    |  10.02 |  13.21 |  18.51 |  10.74 |  14.43 |  19.96 |  10.02 | NN Regression |
+| No_Delay | 3681 | OFDM+TDoA+AoA+RSS+PL+CovE+Rch |  13.36 |  20.49 |  31.95 |   —    |   —    |   —    |   9.73 |  13.29 |  18.38 |  10.82 |  14.64 |  21.54 |   9.73 | NN Regression |
+| No_Reached | 3681 | OFDM+TDoA+AoA+RSS+PL+Dly+CovE |  13.40 |  20.43 |  32.32 |   —    |   —    |   —    |   9.47 |  12.50 |  17.17 |  11.42 |  15.10 |  23.40 |   9.47 | NN Regression |
+| No_RSS | 3681 | OFDM+TDoA+AoA+PL+Dly+CovE+Rch |  13.54 |  20.59 |  33.11 |   —    |   —    |   —    |   9.94 |  13.26 |  17.91 |  10.40 |  13.89 |  21.32 |   9.94 | NN Regression |
+| No_TDoA | 3654 | OFDM+AoA+RSS+PL+Dly+CovE+Rch |  13.61 |  20.66 |  33.53 |   —    |   —    |   —    |   9.64 |  12.84 |  17.20 |  12.62 |  16.83 |  24.02 |   9.64 | NN Regression |
+| No_CovEig | 3663 | OFDM+TDoA+AoA+RSS+PL+Dly+Rch |  13.72 |  20.76 |  33.01 |   —    |   —    |   —    |   9.83 |  13.28 |  17.91 |  10.14 |  13.81 |  19.27 |   9.83 | NN Regression |
+| OFDM_Radio | 3573 | OFDM+RSS+PL |  14.69 |  21.41 |  34.63 |   —    |   —    |   —    |  13.83 |  19.99 |  26.06 |  16.47 |  22.54 |  35.58 |  13.83 | NN Regression |
+| No_AoA | 3654 | OFDM+TDoA+RSS+PL+Dly+CovE+Rch |  14.82 |  22.42 |  36.82 |   —    |   —    |   —    |  13.34 |  19.02 |  26.36 |  17.75 |  23.78 |  38.77 |  13.34 | NN Regression |
+| Solo_OFDM | 3555 | OFDM |  15.01 |  22.37 |  35.24 |   —    |   —    |   —    |  13.93 |  20.10 |  29.01 |  16.92 |  23.41 |  38.15 |  13.93 | NN Regression |
+| Spectral | 3555 | OFDM |  15.01 |  22.37 |  35.24 |   —    |   —    |   —    |  14.09 |  19.87 |  25.99 |  18.37 |  24.99 |  41.76 |  14.09 | NN Regression |
+| Solo_CovEig | 27 | CovE |  35.01 |  45.89 |  78.20 |   —    |   —    |   —    |  33.77 |  42.92 |  72.28 |  32.45 |  41.20 |  70.00 |  32.45 | CNN Regression |
+| Solo_Delay | 9 | Dly |  52.37 |  57.90 |  85.27 |   —    |   —    |   —    |  52.34 |  56.13 |  77.51 |  51.19 |  55.24 |  77.10 |  51.19 | CNN Regression |
+| Solo_TDoA | 36 | TDoA |  52.80 |  58.63 |  87.63 |   —    |   —    |   —    |  52.51 |  56.36 |  77.46 |  55.17 |  58.95 |  81.05 |  52.51 | NN Regression |
+| Solo_Reached | 9 | Rch |  53.43 |  58.93 |  88.01 |   —    |   —    |   —    |  51.15 |  55.48 |  76.02 |  50.78 |  55.07 |  77.16 |  50.78 | CNN Regression |
+| Solo_PathLoss | 9 | PL |  55.90 |  62.41 |  94.71 |   —    |   —    |   —    |  51.46 |  55.46 |  76.26 |  50.87 |  55.24 |  77.47 |  50.87 | CNN Regression |
+
+◄ = best overall by 'wknn_mae'
+

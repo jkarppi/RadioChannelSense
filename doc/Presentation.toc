@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction and Background}{3}{0}{1}
+\beamer@sectionintoc {2}{Otaniemi Scenario and Dataset}{5}{0}{2}
+\beamer@sectionintoc {3}{Fingerprint Localization}{7}{0}{3}
+\beamer@sectionintoc {4}{Channel Charting}{10}{0}{4}
+\beamer@sectionintoc {5}{Conclusions and Future Work}{14}{0}{5}

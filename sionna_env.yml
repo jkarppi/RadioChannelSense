@@ -1,0 +1,20 @@
+name: sionna_env2
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - matplotlib
+  - h5py
+  - llvm=17
+  - pip:
+      - "tensorflow>=2.14,<2.20"
+      - "sionna==1.2.1"
+      - ipykernel
+      - "pandas==3.0.1"
+      - "scikit-learn"
+      - "umap-learn"
+      - "trimesh>=4,<5"

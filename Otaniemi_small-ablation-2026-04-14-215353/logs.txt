@@ -1,0 +1,917 @@
+==========================================================
+  Feature ablation study
+  Scene     : Otaniemi_small
+  Started   : 21:53:53
+  Result dir: Otaniemi_small-ablation-2026-04-14-215353
+==========================================================
+Backed up Otaniemi_small/features_config.json → Otaniemi_small/features_config.json.bak
+
+STEP 0: Generating full-feature base cache …
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, aoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Features OFF : none
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-14 21:53:54.153226: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-14 21:53:54.153983: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 21:53:54.158783: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 21:53:54.172051: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776203634.194627 1776004 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776203634.201145 1776004 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776203634.218506 1776004 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776203634.218536 1776004 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776203634.218539 1776004 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776203634.218540 1776004 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-14 21:53:54.224938: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-14 21:53:58.105233: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Scene : Otaniemi_small/Otaniemi_small.xml
+Data  : /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small
+No fingerprint cache found. Running generator…
+Added 3186 fingerprint receivers to scene
+Running PathSolver on fingerprint grid …
+PathSolver complete.
+H_fp shape: (1, 3186, 1, 9, 1, 1, 3168)
+Covariance eigenvalue features computed: (3186, 27)
+Imputed 982 unreached (rx, tx) pairs across 9 TXs
+Feature shape: (3186, 3690)  (3555 OFDM + 36 TDoA + 36 AoA + 9 RSS + 9 path-loss + 9 delay + 27 cov-eig + 9 reached-flags)
+Saved fingerprint cache → /home/jarikarp/analyse/Machine-Learning-for-Wireless-Comunications-E7340/Project/Otaniemi_small/fingerprint_rt_dataset.h5
+Scene receivers restored.
+Generated fingerprints: (3186, 3690)
+Train: 2230  |  Test: 956  |  Features: 3690
+wKNN  (k=3)  MAE=13.61 m  RMSE=20.66 m  Median=7.88 m  P90=33.53 m  P95=45.00 m
+NN Reg   MAE=9.70 m  RMSE=12.69 m  Median=7.92 m  P90=18.01 m  P95=22.58 m
+NN Classification disabled — skipping.
+CNN Reg  MAE=10.89 m  RMSE=15.09 m  P90=20.26 m  P95=26.97 m  [410 feat/TX × 9 TX]
+
+======================================================================
+LOCALIZATION SUMMARY
+======================================================================
+Method                    MAE    RMSE   Median     P90     P95
+---------------------------------------------------------------
+  WKNN (IDW)            13.61   20.66     7.88   33.53   45.00
+  NN Regression          9.70   12.69     7.92   18.01   22.58
+  CNN Regression        10.89   15.09     8.36   20.26   26.97
+Saved → Otaniemi_small-ablation-2026-04-14-215353/ALL/fingerprint_localization_results.csv
+Saved → Otaniemi_small-ablation-2026-04-14-215353/ALL/fingerprint_localization_summary.json
+Report → Otaniemi_small-ablation-2026-04-14-215353/ALL/03_localization_report.md
+STEP 0 complete.
+
+PHASE 1 — Ablation (one feature removed at a time)
+
+── No_OFDM ───────────────────────────────────────────────
+   Features: tdoa,aoa,rss,path_loss,delay,cov_eigenvalues,reached_flags
+   Started : 22:26:24
+Wrote Otaniemi_small/features_config.json
+  Features ON  : tdoa, aoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Features OFF : ofdm_mag_gd
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-14 22:26:27.926759: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-14 22:26:27.927863: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 22:26:27.932913: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 22:26:27.945327: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776205587.965116 1969698 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776205587.970879 1969698 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776205587.986826 1969698 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776205587.986854 1969698 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776205587.986857 1969698 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776205587.986859 1969698 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-14 22:26:27.992551: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-14 22:26:31.102926: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_OFDM
+============================================================
+  Enabled  features : ['tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Disabled features : ['ofdm_mag_gd']
+  Feature columns   : 135  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=9.70 m  RMSE=18.23 m  (1s)
+  NN Reg          MAE=7.54 m  RMSE=11.18 m  (78s)
+  CNN Reg         MAE=7.48 m  RMSE=10.70 m  (143s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_OFDM/localization_summary.json
+   Finished: 22:30:10  (226s)
+
+── No_TDoA ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,aoa,rss,path_loss,delay,cov_eigenvalues,reached_flags
+   Started : 22:30:10
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, aoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Features OFF : tdoa
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-14 22:30:22.617773: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-14 22:30:22.618799: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 22:30:22.623750: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 22:30:22.636009: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776205822.655826 2075574 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776205822.661588 2075574 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776205822.677075 2075574 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776205822.677097 2075574 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776205822.677099 2075574 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776205822.677101 2075574 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-14 22:30:22.681863: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-14 22:30:25.436061: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_TDoA
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Disabled features : ['tdoa']
+  Feature columns   : 3654  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=13.61 m  RMSE=20.66 m  (10s)
+  NN Reg          MAE=9.64 m  RMSE=12.84 m  (102s)
+  CNN Reg         MAE=12.62 m  RMSE=16.83 m  (1828s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_TDoA/localization_summary.json
+   Finished: 23:02:33  (1943s)
+
+── No_AoA ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,tdoa,rss,path_loss,delay,cov_eigenvalues,reached_flags
+   Started : 23:02:33
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Features OFF : aoa
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-14 23:02:47.255799: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-14 23:02:47.256853: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 23:02:47.261740: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 23:02:47.273524: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776207767.294354 2269903 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776207767.300091 2269903 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776207767.315549 2269903 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776207767.315570 2269903 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776207767.315573 2269903 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776207767.315576 2269903 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-14 23:02:47.320183: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-14 23:02:50.221511: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_AoA
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'tdoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Disabled features : ['aoa']
+  Feature columns   : 3654  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=14.82 m  RMSE=22.42 m  (11s)
+  NN Reg          MAE=13.34 m  RMSE=19.02 m  (75s)
+  CNN Reg         MAE=17.75 m  RMSE=23.78 m  (1831s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_AoA/localization_summary.json
+   Finished: 23:34:33  (1920s)
+
+── No_RSS ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,tdoa,aoa,path_loss,delay,cov_eigenvalues,reached_flags
+   Started : 23:34:33
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, aoa, path_loss, delay, cov_eigenvalues, reached_flags
+  Features OFF : rss
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-14 23:34:47.006386: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-14 23:34:47.007447: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 23:34:47.012297: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 23:34:47.024141: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776209687.043917 2452074 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776209687.049654 2452074 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776209687.065161 2452074 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776209687.065184 2452074 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776209687.065186 2452074 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776209687.065188 2452074 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-14 23:34:47.069970: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-14 23:34:49.793170: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_RSS
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Disabled features : ['rss']
+  Feature columns   : 3681  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=13.54 m  RMSE=20.59 m  (10s)
+  NN Reg          MAE=9.94 m  RMSE=13.26 m  (111s)
+  CNN Reg         MAE=10.40 m  RMSE=13.89 m  (1379s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_RSS/localization_summary.json
+   Finished: 23:59:37  (1503s)
+
+── No_PathLoss ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,tdoa,aoa,rss,delay,cov_eigenvalues,reached_flags
+   Started : 23:59:37
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, aoa, rss, delay, cov_eigenvalues, reached_flags
+  Features OFF : path_loss
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-14 23:59:51.589890: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-14 23:59:51.591126: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 23:59:51.596652: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-14 23:59:51.610877: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776211191.635709 2617222 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776211191.642685 2617222 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776211191.661783 2617222 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776211191.661814 2617222 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776211191.661816 2617222 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776211191.661818 2617222 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-14 23:59:51.667562: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-14 23:59:54.491702: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_PathLoss
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Disabled features : ['path_loss']
+  Feature columns   : 3681  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=13.36 m  RMSE=20.49 m  (11s)
+  NN Reg          MAE=10.02 m  RMSE=13.21 m  (105s)
+  CNN Reg         MAE=10.74 m  RMSE=14.43 m  (1596s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_PathLoss/localization_summary.json
+   Finished: 00:28:13  (1716s)
+
+── No_Delay ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,tdoa,aoa,rss,path_loss,cov_eigenvalues,reached_flags
+   Started : 00:28:13
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, aoa, rss, path_loss, cov_eigenvalues, reached_flags
+  Features OFF : delay
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 00:28:25.821720: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 00:28:25.822739: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 00:28:25.827626: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 00:28:25.839574: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776212905.859296 2794295 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776212905.865080 2794295 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776212905.880572 2794295 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776212905.880591 2794295 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776212905.880594 2794295 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776212905.880595 2794295 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 00:28:25.885162: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 00:28:28.548066: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_Delay
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'path_loss', 'cov_eigenvalues', 'reached_flags']
+  Disabled features : ['delay']
+  Feature columns   : 3681  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=13.36 m  RMSE=20.49 m  (10s)
+  NN Reg          MAE=9.73 m  RMSE=13.29 m  (103s)
+  CNN Reg         MAE=10.82 m  RMSE=14.64 m  (2346s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_Delay/localization_summary.json
+   Finished: 01:09:15  (2462s)
+
+── No_CovEig ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,tdoa,aoa,rss,path_loss,delay,reached_flags
+   Started : 01:09:15
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, aoa, rss, path_loss, delay, reached_flags
+  Features OFF : cov_eigenvalues
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 01:09:28.436181: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 01:09:28.437213: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 01:09:28.442111: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 01:09:28.453903: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776215368.473862 3029501 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776215368.479599 3029501 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776215368.495096 3029501 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776215368.495116 3029501 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776215368.495119 3029501 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776215368.495121 3029501 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 01:09:28.499669: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 01:09:31.263189: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_CovEig
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'reached_flags']
+  Disabled features : ['cov_eigenvalues']
+  Feature columns   : 3663  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=13.72 m  RMSE=20.76 m  (11s)
+  NN Reg          MAE=9.83 m  RMSE=13.28 m  (102s)
+  CNN Reg         MAE=10.14 m  RMSE=13.81 m  (1526s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_CovEig/localization_summary.json
+   Finished: 01:36:37  (1642s)
+
+── No_Reached ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,tdoa,aoa,rss,path_loss,delay,cov_eigenvalues
+   Started : 01:36:37
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, tdoa, aoa, rss, path_loss, delay, cov_eigenvalues
+  Features OFF : reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 01:36:51.235292: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 01:36:51.236324: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 01:36:51.241199: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 01:36:51.253066: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776217011.272841 3201265 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776217011.278573 3201265 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776217011.294015 3201265 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776217011.294036 3201265 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776217011.294039 3201265 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776217011.294042 3201265 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 01:36:51.298818: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 01:36:53.941122: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_Reached
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues']
+  Disabled features : ['reached_flags']
+  Feature columns   : 3681  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=13.40 m  RMSE=20.43 m  (11s)
+  NN Reg          MAE=9.47 m  RMSE=12.50 m  (114s)
+  CNN Reg         MAE=11.42 m  RMSE=15.10 m  (1510s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_Reached/localization_summary.json
+   Finished: 02:03:55  (1638s)
+
+PHASE 2 — Solo (one feature group at a time)
+
+── Solo_OFDM ───────────────────────────────────────────────
+   Features: ofdm_mag_gd
+   Started : 02:03:55
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd
+  Features OFF : tdoa, aoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:04:07.715180: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:04:07.716390: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:04:07.721889: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:04:07.736188: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776218647.760677 3376855 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776218647.767668 3376855 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776218647.786721 3376855 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776218647.786753 3376855 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776218647.786756 3376855 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776218647.786758 3376855 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:04:07.792287: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:04:10.618528: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_OFDM
+============================================================
+  Enabled  features : ['ofdm_mag_gd']
+  Disabled features : ['tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 3555  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 4)  MAE=15.01 m  RMSE=22.37 m  (10s)
+  NN Reg          MAE=13.93 m  RMSE=20.10 m  (71s)
+  CNN Reg         MAE=16.92 m  RMSE=23.41 m  (1282s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_OFDM/localization_summary.json
+   Finished: 02:26:41  (1366s)
+
+── Solo_TDoA ───────────────────────────────────────────────
+   Features: tdoa
+   Started : 02:26:41
+Wrote Otaniemi_small/features_config.json
+  Features ON  : tdoa
+  Features OFF : ofdm_mag_gd, aoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:26:44.932974: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:26:44.934027: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:26:44.938943: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:26:44.950792: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220004.973124 3515979 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220004.979698 3515979 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220004.997483 3515979 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220004.997509 3515979 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220004.997511 3515979 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220004.997513 3515979 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:26:45.002987: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:26:47.660714: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_TDoA
+============================================================
+  Enabled  features : ['tdoa']
+  Disabled features : ['ofdm_mag_gd', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 36  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k=13)  MAE=52.80 m  RMSE=58.63 m  (1s)
+  NN Reg          MAE=52.51 m  RMSE=56.36 m  (42s)
+  CNN Reg         MAE=55.17 m  RMSE=58.95 m  (27s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_TDoA/localization_summary.json
+   Finished: 02:27:54  (73s)
+
+── Solo_AoA ───────────────────────────────────────────────
+   Features: aoa
+   Started : 02:27:54
+Wrote Otaniemi_small/features_config.json
+  Features ON  : aoa
+  Features OFF : ofdm_mag_gd, tdoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:27:58.224604: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:27:58.225639: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:27:58.230485: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:27:58.242235: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220078.264457 3561094 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220078.270971 3561094 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220078.288624 3561094 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220078.288648 3561094 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220078.288651 3561094 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220078.288652 3561094 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:27:58.294071: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:28:01.005930: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_AoA
+============================================================
+  Enabled  features : ['aoa']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 36  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=7.76 m  RMSE=13.56 m  (1s)
+  NN Reg          MAE=7.79 m  RMSE=11.25 m  (96s)
+  CNN Reg         MAE=7.48 m  RMSE=11.49 m  (112s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_AoA/localization_summary.json
+   Finished: 02:31:26  (212s)
+
+── Solo_RSS ───────────────────────────────────────────────
+   Features: rss
+   Started : 02:31:27
+Wrote Otaniemi_small/features_config.json
+  Features ON  : rss
+  Features OFF : ofdm_mag_gd, tdoa, aoa, path_loss, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:31:29.297156: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:31:29.297985: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:31:29.301730: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:31:29.311761: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220289.329414 3685747 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220289.334426 3685747 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220289.348219 3685747 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220289.348240 3685747 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220289.348242 3685747 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220289.348243 3685747 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:31:29.352424: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:31:32.072892: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_RSS
+============================================================
+  Enabled  features : ['rss']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 9  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=9.94 m  RMSE=20.18 m  (0s)
+  NN Reg          MAE=11.05 m  RMSE=18.07 m  (52s)
+  CNN Reg         MAE=12.21 m  RMSE=19.31 m  (49s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_RSS/localization_summary.json
+   Finished: 02:33:10  (103s)
+
+── Solo_PathLoss ───────────────────────────────────────────────
+   Features: path_loss
+   Started : 02:33:10
+Wrote Otaniemi_small/features_config.json
+  Features ON  : path_loss
+  Features OFF : ofdm_mag_gd, tdoa, aoa, rss, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:33:13.693134: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:33:13.694156: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:33:13.699010: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:33:13.712112: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220393.734710 3748122 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220393.741242 3748122 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220393.758873 3748122 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220393.758909 3748122 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220393.758913 3748122 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220393.758915 3748122 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:33:13.764297: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:33:16.539699: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_PathLoss
+============================================================
+  Enabled  features : ['path_loss']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 9  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k=13)  MAE=55.90 m  RMSE=62.41 m  (1s)
+  NN Reg          MAE=51.46 m  RMSE=55.46 m  (22s)
+  CNN Reg         MAE=50.87 m  RMSE=55.24 m  (50s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_PathLoss/localization_summary.json
+   Finished: 02:34:26  (76s)
+
+── Solo_Delay ───────────────────────────────────────────────
+   Features: delay
+   Started : 02:34:26
+Wrote Otaniemi_small/features_config.json
+  Features ON  : delay
+  Features OFF : ofdm_mag_gd, tdoa, aoa, rss, path_loss, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:34:30.065281: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:34:30.066316: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:34:30.071182: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:34:30.083894: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220470.106522 3788280 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220470.113058 3788280 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220470.130650 3788280 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220470.130677 3788280 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220470.130680 3788280 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220470.130681 3788280 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:34:30.136077: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:34:32.892189: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_Delay
+============================================================
+  Enabled  features : ['delay']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'path_loss', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 9  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k=13)  MAE=52.37 m  RMSE=57.90 m  (1s)
+  NN Reg          MAE=52.34 m  RMSE=56.13 m  (22s)
+  CNN Reg         MAE=51.19 m  RMSE=55.24 m  (36s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_Delay/localization_summary.json
+   Finished: 02:35:29  (62s)
+
+── Solo_CovEig ───────────────────────────────────────────────
+   Features: cov_eigenvalues
+   Started : 02:35:29
+Wrote Otaniemi_small/features_config.json
+  Features ON  : cov_eigenvalues
+  Features OFF : ofdm_mag_gd, tdoa, aoa, rss, path_loss, delay, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:35:32.518170: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:35:32.519261: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:35:32.524199: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:35:32.536112: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220532.558802 3819765 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220532.565408 3819765 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220532.583151 3819765 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220532.583180 3819765 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220532.583183 3819765 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220532.583185 3819765 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:35:32.588805: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:35:35.335667: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_CovEig
+============================================================
+  Enabled  features : ['cov_eigenvalues']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'reached_flags']
+  Feature columns   : 27  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 3)  MAE=35.01 m  RMSE=45.89 m  (1s)
+  NN Reg          MAE=33.77 m  RMSE=42.92 m  (76s)
+  CNN Reg         MAE=32.45 m  RMSE=41.20 m  (106s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_CovEig/localization_summary.json
+   Finished: 02:38:35  (186s)
+
+── Solo_Reached ───────────────────────────────────────────────
+   Features: reached_flags
+   Started : 02:38:35
+Wrote Otaniemi_small/features_config.json
+  Features ON  : reached_flags
+  Features OFF : ofdm_mag_gd, tdoa, aoa, rss, path_loss, delay, cov_eigenvalues
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:38:38.192601: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:38:38.193647: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:38:38.198497: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:38:38.211582: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220718.234235 3928721 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220718.240789 3928721 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220718.258476 3928721 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220718.258502 3928721 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220718.258504 3928721 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220718.258506 3928721 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:38:38.263969: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:38:41.031650: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Solo_Reached
+============================================================
+  Enabled  features : ['reached_flags']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues']
+  Feature columns   : 9  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k=15)  MAE=53.43 m  RMSE=58.93 m  (1s)
+  NN Reg          MAE=51.15 m  RMSE=55.48 m  (22s)
+  CNN Reg         MAE=50.78 m  RMSE=55.07 m  (34s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Solo_Reached/localization_summary.json
+   Finished: 02:39:34  (59s)
+
+PHASE 3 — Logical groups
+
+── Geometry ───────────────────────────────────────────────
+   Features: tdoa,aoa,delay
+   Started : 02:39:34
+Wrote Otaniemi_small/features_config.json
+  Features ON  : tdoa, aoa, delay
+  Features OFF : ofdm_mag_gd, rss, path_loss, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:39:37.622565: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:39:37.623662: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:39:37.628550: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:39:37.640508: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220777.660401 3959347 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220777.667000 3959347 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220777.684831 3959347 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220777.684857 3959347 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220777.684860 3959347 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220777.684861 3959347 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:39:37.690335: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:39:40.398228: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Geometry
+============================================================
+  Enabled  features : ['tdoa', 'aoa', 'delay']
+  Disabled features : ['ofdm_mag_gd', 'rss', 'path_loss', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 81  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=8.56 m  RMSE=16.17 m  (1s)
+  NN Reg          MAE=8.15 m  RMSE=12.02 m  (93s)
+  CNN Reg         MAE=7.60 m  RMSE=10.91 m  (125s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Geometry/localization_summary.json
+   Finished: 02:43:16  (221s)
+
+── Radio ───────────────────────────────────────────────
+   Features: rss,path_loss,reached_flags
+   Started : 02:43:16
+Wrote Otaniemi_small/features_config.json
+  Features ON  : rss, path_loss, reached_flags
+  Features OFF : ofdm_mag_gd, tdoa, aoa, delay, cov_eigenvalues
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:43:19.579504: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:43:19.580541: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:43:19.585421: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:43:19.597234: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776220999.619927 4077025 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776220999.626494 4077025 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776220999.644355 4077025 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220999.644381 4077025 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220999.644383 4077025 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776220999.644385 4077025 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:43:19.650046: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:43:21.969357: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Radio
+============================================================
+  Enabled  features : ['rss', 'path_loss', 'reached_flags']
+  Disabled features : ['ofdm_mag_gd', 'tdoa', 'aoa', 'delay', 'cov_eigenvalues']
+  Feature columns   : 27  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=10.61 m  RMSE=21.74 m  (1s)
+  NN Reg          MAE=12.86 m  RMSE=20.34 m  (59s)
+  CNN Reg         MAE=10.66 m  RMSE=19.37 m  (119s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Radio/localization_summary.json
+   Finished: 02:46:18  (182s)
+
+── Spectral ───────────────────────────────────────────────
+   Features: ofdm_mag_gd
+   Started : 02:46:18
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd
+  Features OFF : tdoa, aoa, rss, path_loss, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 02:46:30.145693: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 02:46:30.146717: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:46:30.151613: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 02:46:30.163463: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776221190.183192 4180248 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776221190.188905 4180248 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776221190.204261 4180248 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776221190.204282 4180248 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776221190.204285 4180248 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776221190.204291 4180248 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 02:46:30.208849: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 02:46:32.926478: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Spectral
+============================================================
+  Enabled  features : ['ofdm_mag_gd']
+  Disabled features : ['tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 3555  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 4)  MAE=15.01 m  RMSE=22.37 m  (10s)
+  NN Reg          MAE=14.09 m  RMSE=19.87 m  (58s)
+  CNN Reg         MAE=18.37 m  RMSE=24.99 m  (2090s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Spectral/localization_summary.json
+   Finished: 03:22:18  (2160s)
+
+── Light ───────────────────────────────────────────────
+   Features: tdoa,aoa,rss,reached_flags
+   Started : 03:22:18
+Wrote Otaniemi_small/features_config.json
+  Features ON  : tdoa, aoa, rss, reached_flags
+  Features OFF : ofdm_mag_gd, path_loss, delay, cov_eigenvalues
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 03:22:22.374442: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 03:22:22.375668: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 03:22:22.381149: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 03:22:22.395299: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776223342.419326  184125 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776223342.426256  184125 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776223342.445698  184125 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223342.445733  184125 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223342.445736  184125 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223342.445743  184125 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 03:22:22.451735: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 03:22:25.298785: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: Light
+============================================================
+  Enabled  features : ['tdoa', 'aoa', 'rss', 'reached_flags']
+  Disabled features : ['ofdm_mag_gd', 'path_loss', 'delay', 'cov_eigenvalues']
+  Feature columns   : 90  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=8.00 m  RMSE=15.68 m  (2s)
+  NN Reg          MAE=6.58 m  RMSE=9.68 m  (89s)
+  CNN Reg         MAE=7.29 m  RMSE=10.29 m  (97s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/Light/localization_summary.json
+   Finished: 03:25:29  (191s)
+
+── No_OFDM_Light ───────────────────────────────────────────────
+   Features: tdoa,aoa,rss,path_loss,delay,reached_flags
+   Started : 03:25:29
+Wrote Otaniemi_small/features_config.json
+  Features ON  : tdoa, aoa, rss, path_loss, delay, reached_flags
+  Features OFF : ofdm_mag_gd, cov_eigenvalues
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 03:25:32.786502: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 03:25:32.787601: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 03:25:32.792654: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 03:25:32.804642: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776223532.824321  287277 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776223532.830019  287277 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776223532.847449  287277 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223532.847473  287277 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223532.847475  287277 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223532.847477  287277 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 03:25:32.852975: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 03:25:35.637656: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: No_OFDM_Light
+============================================================
+  Enabled  features : ['tdoa', 'aoa', 'rss', 'path_loss', 'delay', 'reached_flags']
+  Disabled features : ['ofdm_mag_gd', 'cov_eigenvalues']
+  Feature columns   : 108  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 2)  MAE=8.27 m  RMSE=16.73 m  (2s)
+  NN Reg          MAE=7.13 m  RMSE=10.31 m  (81s)
+  CNN Reg         MAE=6.61 m  RMSE=9.89 m  (165s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/No_OFDM_Light/localization_summary.json
+   Finished: 03:29:39  (250s)
+
+── OFDM_Radio ───────────────────────────────────────────────
+   Features: ofdm_mag_gd,rss,path_loss
+   Started : 03:29:39
+Wrote Otaniemi_small/features_config.json
+  Features ON  : ofdm_mag_gd, rss, path_loss
+  Features OFF : tdoa, aoa, delay, cov_eigenvalues, reached_flags
+  Methods      : wknn, nn_regression, cnn_regression
+2026-04-15 03:29:51.483833: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 03:29:51.484867: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 03:29:51.489716: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 03:29:51.501553: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1776223791.521290  410378 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1776223791.527008  410378 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1776223791.542464  410378 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223791.542486  410378 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223791.542489  410378 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1776223791.542495  410378 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-04-15 03:29:51.547271: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 03:29:54.270449: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+
+============================================================
+Combo: OFDM_Radio
+============================================================
+  Enabled  features : ['ofdm_mag_gd', 'rss', 'path_loss']
+  Disabled features : ['tdoa', 'aoa', 'delay', 'cov_eigenvalues', 'reached_flags']
+  Feature columns   : 3573  (base cache: 3690)
+  Train: 2230  |  Test: 956
+  wKNN    (k= 4)  MAE=14.69 m  RMSE=21.41 m  (10s)
+  NN Reg          MAE=13.83 m  RMSE=19.99 m  (100s)
+  CNN Reg         MAE=16.47 m  RMSE=22.54 m  (1180s)
+  Saved → Otaniemi_small-ablation-2026-04-14-215353/OFDM_Radio/localization_summary.json
+   Finished: 03:51:12  (1293s)
+
+Generating comparison table …
+
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                            FEATURE ABLATION RESULTS                                                            ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  Sorted by: wknn_mae  (best → worst)
+
+Combination            N_feat  Features ON                              wKNN               NN Reg             CNN Reg        Best_MAE  Best_method
+                                                                    MAE   RMSE    P90     MAE   RMSE    P90     MAE   RMSE    P90            
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Solo_AoA                   36  AoA                                 7.76  13.56  15.45    7.79   11.25   15.24    7.48   11.49   16.39      7.48  CNN Regression ◄
+Light                      90  TDoA+AoA+RSS+Rch                    8.00  15.68  14.80    6.58    9.68   12.76    7.29   10.29   14.83      6.58  NN Regression  
+No_OFDM_Light             108  TDoA+AoA+RSS+PL+Dly+Rch             8.27  16.73  14.84    7.13   10.31   12.81    6.61    9.89   13.40      6.61  CNN Regression  
+Geometry                   81  TDoA+AoA+Dly                        8.56  16.17  17.02    8.15   12.02   15.84    7.60   10.91   15.39      7.60  CNN Regression  
+No_OFDM                   135  TDoA+AoA+RSS+PL+Dly+CovE+Rch        9.70  18.23  18.63    7.54   11.18   14.61    7.48   10.70   15.23      7.48  CNN Regression  
+Solo_RSS                    9  RSS                                 9.94  20.18  25.62   11.05   18.07   20.80   12.21   19.31   26.54      9.94  WKNN (IDW)  
+Radio                      27  RSS+PL+Rch                         10.61  21.74  28.75   12.86   20.34   26.36   10.66   19.37   24.30     10.61  WKNN (IDW)  
+No_PathLoss              3681  OFDM+TDoA+AoA+RSS+Dly+CovE+Rch     13.36  20.49  31.95   10.02   13.21   18.51   10.74   14.43   19.96     10.02  NN Regression  
+No_Delay                 3681  OFDM+TDoA+AoA+RSS+PL+CovE+Rch      13.36  20.49  31.95    9.73   13.29   18.38   10.82   14.64   21.54      9.73  NN Regression  
+No_Reached               3681  OFDM+TDoA+AoA+RSS+PL+Dly+CovE      13.40  20.43  32.32    9.47   12.50   17.17   11.42   15.10   23.40      9.47  NN Regression  
+No_RSS                   3681  OFDM+TDoA+AoA+PL+Dly+CovE+Rch      13.54  20.59  33.11    9.94   13.26   17.91   10.40   13.89   21.32      9.94  NN Regression  
+No_TDoA                  3654  OFDM+AoA+RSS+PL+Dly+CovE+Rch       13.61  20.66  33.53    9.64   12.84   17.20   12.62   16.83   24.02      9.64  NN Regression  
+No_CovEig                3663  OFDM+TDoA+AoA+RSS+PL+Dly+Rch       13.72  20.76  33.01    9.83   13.28   17.91   10.14   13.81   19.27      9.83  NN Regression  
+OFDM_Radio               3573  OFDM+RSS+PL                        14.69  21.41  34.63   13.83   19.99   26.06   16.47   22.54   35.58     13.83  NN Regression  
+No_AoA                   3654  OFDM+TDoA+RSS+PL+Dly+CovE+Rch      14.82  22.42  36.82   13.34   19.02   26.36   17.75   23.78   38.77     13.34  NN Regression  
+Solo_OFDM                3555  OFDM                               15.01  22.37  35.24   13.93   20.10   29.01   16.92   23.41   38.15     13.93  NN Regression  
+Spectral                 3555  OFDM                               15.01  22.37  35.24   14.09   19.87   25.99   18.37   24.99   41.76     14.09  NN Regression  
+Solo_CovEig                27  CovE                               35.01  45.89  78.20   33.77   42.92   72.28   32.45   41.20   70.00     32.45  CNN Regression  
+Solo_Delay                  9  Dly                                52.37  57.90  85.27   52.34   56.13   77.51   51.19   55.24   77.10     51.19  CNN Regression  
+Solo_TDoA                  36  TDoA                               52.80  58.63  87.63   52.51   56.36   77.46   55.17   58.95   81.05     52.51  NN Regression  
+Solo_Reached                9  Rch                                53.43  58.93  88.01   51.15   55.48   76.02   50.78   55.07   77.16     50.78  CNN Regression  
+Solo_PathLoss               9  PL                                 55.90  62.41  94.71   51.46   55.46   76.26   50.87   55.24   77.47     50.87  CNN Regression  
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  ◄ = best overall by 'wknn_mae'
+
+CSV saved → Otaniemi_small-ablation-2026-04-14-215353/ablation_results.csv
+
+Also printing sorted by best_mae …
+
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                            FEATURE ABLATION RESULTS                                                            ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  Sorted by: best_mae  (best → worst)
+
+Combination            N_feat  Features ON                              wKNN               NN Reg             CNN Reg        Best_MAE  Best_method
+                                                                    MAE   RMSE    P90     MAE   RMSE    P90     MAE   RMSE    P90            
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Light                      90  TDoA+AoA+RSS+Rch                    8.00  15.68  14.80    6.58    9.68   12.76    7.29   10.29   14.83      6.58  NN Regression ◄
+No_OFDM_Light             108  TDoA+AoA+RSS+PL+Dly+Rch             8.27  16.73  14.84    7.13   10.31   12.81    6.61    9.89   13.40      6.61  CNN Regression  
+No_OFDM                   135  TDoA+AoA+RSS+PL+Dly+CovE+Rch        9.70  18.23  18.63    7.54   11.18   14.61    7.48   10.70   15.23      7.48  CNN Regression  
+Solo_AoA                   36  AoA                                 7.76  13.56  15.45    7.79   11.25   15.24    7.48   11.49   16.39      7.48  CNN Regression  
+Geometry                   81  TDoA+AoA+Dly                        8.56  16.17  17.02    8.15   12.02   15.84    7.60   10.91   15.39      7.60  CNN Regression  
+No_Reached               3681  OFDM+TDoA+AoA+RSS+PL+Dly+CovE      13.40  20.43  32.32    9.47   12.50   17.17   11.42   15.10   23.40      9.47  NN Regression  
+No_TDoA                  3654  OFDM+AoA+RSS+PL+Dly+CovE+Rch       13.61  20.66  33.53    9.64   12.84   17.20   12.62   16.83   24.02      9.64  NN Regression  
+No_Delay                 3681  OFDM+TDoA+AoA+RSS+PL+CovE+Rch      13.36  20.49  31.95    9.73   13.29   18.38   10.82   14.64   21.54      9.73  NN Regression  
+No_CovEig                3663  OFDM+TDoA+AoA+RSS+PL+Dly+Rch       13.72  20.76  33.01    9.83   13.28   17.91   10.14   13.81   19.27      9.83  NN Regression  
+No_RSS                   3681  OFDM+TDoA+AoA+PL+Dly+CovE+Rch      13.54  20.59  33.11    9.94   13.26   17.91   10.40   13.89   21.32      9.94  NN Regression  
+Solo_RSS                    9  RSS                                 9.94  20.18  25.62   11.05   18.07   20.80   12.21   19.31   26.54      9.94  WKNN (IDW)  
+No_PathLoss              3681  OFDM+TDoA+AoA+RSS+Dly+CovE+Rch     13.36  20.49  31.95   10.02   13.21   18.51   10.74   14.43   19.96     10.02  NN Regression  
+Radio                      27  RSS+PL+Rch                         10.61  21.74  28.75   12.86   20.34   26.36   10.66   19.37   24.30     10.61  WKNN (IDW)  
+No_AoA                   3654  OFDM+TDoA+RSS+PL+Dly+CovE+Rch      14.82  22.42  36.82   13.34   19.02   26.36   17.75   23.78   38.77     13.34  NN Regression  
+OFDM_Radio               3573  OFDM+RSS+PL                        14.69  21.41  34.63   13.83   19.99   26.06   16.47   22.54   35.58     13.83  NN Regression  
+Solo_OFDM                3555  OFDM                               15.01  22.37  35.24   13.93   20.10   29.01   16.92   23.41   38.15     13.93  NN Regression  
+Spectral                 3555  OFDM                               15.01  22.37  35.24   14.09   19.87   25.99   18.37   24.99   41.76     14.09  NN Regression  
+Solo_CovEig                27  CovE                               35.01  45.89  78.20   33.77   42.92   72.28   32.45   41.20   70.00     32.45  CNN Regression  
+Solo_Reached                9  Rch                                53.43  58.93  88.01   51.15   55.48   76.02   50.78   55.07   77.16     50.78  CNN Regression  
+Solo_PathLoss               9  PL                                 55.90  62.41  94.71   51.46   55.46   76.26   50.87   55.24   77.47     50.87  CNN Regression  
+Solo_Delay                  9  Dly                                52.37  57.90  85.27   52.34   56.13   77.51   51.19   55.24   77.10     51.19  CNN Regression  
+Solo_TDoA                  36  TDoA                               52.80  58.63  87.63   52.51   56.36   77.46   55.17   58.95   81.05     52.51  NN Regression  
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  ◄ = best overall by 'best_mae'
+
+==========================================================
+  All done  03:51:12
+  Total time: 357m 19s
+  Results   : Otaniemi_small-ablation-2026-04-14-215353/
+  CSV table : Otaniemi_small-ablation-2026-04-14-215353/ablation_results.csv
+  Text table: Otaniemi_small-ablation-2026-04-14-215353/ablation_results_table.txt
+==========================================================
+Restored original features_config.json.

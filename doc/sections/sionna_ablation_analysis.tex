@@ -1,0 +1,93 @@
+\subsection{Feature Ablation Study}
+\label{sec:ablation}
+
+To understand which CSI feature families actually drive the localization
+performance, an ablation was run on the Otaniemi\_small dataset over 22
+combinations of the eight candidate feature groups: raw OFDM taps,
+time-difference-of-arrival (TDoA), angle-of-arrival (AoA), received
+signal strength (RSS), path-loss (PL), per-path delay (Dly), covariance
+eigenvalues (CovE), and a LOS-reached indicator (Rch).
+For each combination the three regression heads from
+Section~\ref{sec:localization} (wKNN, NN, CNN) were re-trained on an
+identical train/test split and scored by MAE, RMSE and $P_{90}$.
+Table~\ref{tab:ablation} lists the best MAE for each feature combination,
+sorted from best to worst.
+
+\begin{table}[htbp]
+\caption{Feature-ablation results on Otaniemi\_small.  ``Best MAE'' is
+         the minimum across the three regressors; ``Method'' names the
+         winner.  Feature families: OFDM = raw OFDM taps,
+         TDoA = time-difference of arrival, AoA = angle of arrival,
+         RSS = received power, PL = path loss, Dly = per-path delay,
+         CovE = covariance eigenvalues, Rch = reached/LOS flag.}
+\label{tab:ablation}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrlrl}
+\toprule
+Combination          & $N_{\mathrm{feat}}$ & Features                      & Best MAE (m) & Method \\
+\midrule
+Light                & 90                   & TDoA+AoA+RSS+Rch              & \textbf{6.58} & NN Reg \\
+No\_OFDM\_Light      & 108                  & TDoA+AoA+RSS+PL+Dly+Rch       & 6.61          & CNN Reg \\
+Solo\_AoA            & 36                   & AoA                           & 7.48          & CNN Reg \\
+No\_OFDM             & 135                  & TDoA+AoA+RSS+PL+Dly+CovE+Rch  & 7.48          & CNN Reg \\
+Geometry             & 81                   & TDoA+AoA+Dly                  & 7.60          & CNN Reg \\
+Solo\_RSS            & 9                    & RSS                           & 9.94          & wKNN \\
+Radio                & 27                   & RSS+PL+Rch                    & 10.61         & wKNN \\
+No\_Reached          & 3681                 & OFDM+TDoA+AoA+RSS+PL+Dly+CovE & 9.47          & NN Reg \\
+No\_TDoA             & 3654                 & OFDM+AoA+RSS+PL+Dly+CovE+Rch  & 9.64          & NN Reg \\
+No\_Delay            & 3681                 & OFDM+TDoA+AoA+RSS+PL+CovE+Rch & 9.73          & NN Reg \\
+No\_CovEig           & 3663                 & OFDM+TDoA+AoA+RSS+PL+Dly+Rch  & 9.83          & NN Reg \\
+No\_RSS              & 3681                 & OFDM+TDoA+AoA+PL+Dly+CovE+Rch & 9.94          & NN Reg \\
+No\_PathLoss         & 3681                 & OFDM+TDoA+AoA+RSS+Dly+CovE+Rch & 10.02        & NN Reg \\
+No\_AoA              & 3654                 & OFDM+TDoA+RSS+PL+Dly+CovE+Rch & 13.34         & NN Reg \\
+OFDM\_Radio          & 3573                 & OFDM+RSS+PL                   & 13.83         & NN Reg \\
+Solo\_OFDM           & 3555                 & OFDM                          & 13.93         & NN Reg \\
+Spectral             & 3555                 & OFDM                          & 14.09         & NN Reg \\
+Solo\_CovEig         & 27                   & CovE                          & 32.45         & CNN Reg \\
+Solo\_Reached        & 9                    & Rch                           & 50.78         & CNN Reg \\
+Solo\_PathLoss       & 9                    & PL                            & 50.87         & CNN Reg \\
+Solo\_Delay          & 9                    & Dly                           & 51.19         & CNN Reg \\
+Solo\_TDoA           & 36                   & TDoA                          & 52.51         & NN Reg \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Four observations are worth highlighting:
+
+\paragraph{AoA dominates.}
+The 36-feature \texttt{Solo\_AoA} configuration already reaches
+$7.48\,\text{m}$ MAE, beating every combination that includes the full
+3\,555 raw OFDM taps.  Angles of arrival across the nine BS sites carry
+most of the useful geometric signal in a multi-BS outdoor
+scene~\cite{3gpp_nr_channel}.
+
+\paragraph{Raw OFDM hurts more than it helps.}
+wKNN on \texttt{Solo\_OFDM} reaches only $15.01\,\text{m}$ MAE, roughly
+double the compact combinations.  The 3\,555 frequency taps dominate the
+Euclidean distance computation used by wKNN and obscure the geometric
+features; the NN regressor can partially learn to filter them
+(MAE $\sim 10\,\text{m}$) but the full-feature baseline still
+\emph{loses} to the 90-feature \texttt{Light} set
+($6.58\,\text{m}$) --- a textbook curse-of-dimensionality
+effect~\cite{vandermaaten2008tsne}.
+
+\paragraph{Single scalar features are useless alone but useful in combination.}
+\texttt{Solo\_TDoA}, \texttt{Solo\_Delay}, \texttt{Solo\_PathLoss} and
+\texttt{Solo\_Reached} all collapse to $50$--$56\,\text{m}$ MAE on their
+own because each scalar is geometrically ambiguous across the scene.
+Yet \emph{removing} any one of them from the full stack measurably
+worsens the result (\emph{e.g.}\ removing AoA lifts wKNN from
+$7.76$ to $14.82\,\text{m}$), showing that their value lies in the
+joint manifold rather than in any individual coordinate.
+
+\paragraph{Sweet spot: the Light configuration.}
+The 90-feature \texttt{Light} set (TDoA+AoA+RSS+Rch) attains the best
+overall MAE ($6.58\,\text{m}$, NN regression), a 31\,\% improvement on
+the 3\,690-feature baseline used in Section~\ref{sec:localization}
+($9.53\,\text{m}$), with $97.6\,\%$ fewer features and correspondingly
+faster training and inference.
+This set is therefore the recommended working point for any follow-on
+Otaniemi experiments and is consistent with the feature guidance in the
+broader channel-charting literature~\cite{studer2018channel_charting}.

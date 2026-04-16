@@ -1,0 +1,5 @@
+Method,TW (↑ better),CT (↑ better),KS (↓ better),NNLE m (↓ better)
+PCA,0.7058,0.9315,0.5144,n/a
+t-SNE (perp=30),0.9178,0.9576,0.4505,8.35
+Autoencoder,0.8495,0.9197,0.7705,22.00
+UMAP (n=5),0.8963,0.9139,0.8611,10.92

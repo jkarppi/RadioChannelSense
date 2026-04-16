@@ -1,0 +1,165 @@
+\section{Localisation Accuracy and Practical Value}
+\label{sec:localization}
+
+This section evaluates the accuracy of the radio-fingerprint-based localisation
+methods and the channel charting dimensionality-reduction analysis, then
+interprets those numbers in plain terms to guide practical deployment decisions.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{What the Numbers Mean for a Real User}
+\label{sec:accuracy_meaning}
+
+Localisation accuracy is typically reported as a Mean Absolute Error (MAE) or
+90th-percentile error (P90).  To make these figures concrete,
+Fig.~\ref{fig:loc_scale} maps MAE and P90 values onto everyday objects and
+distances: a \emph{parking space} is $\approx 5\,\text{m}$, a \emph{city block}
+is $\approx 100\,\text{m}$, and a \emph{corridor width} is $1{-}2\,\text{m}$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/loc_scale_visual.png}
+  \caption{Real-world scale interpretation of localisation MAE and 90th-percentile
+           error for the three fingerprinting methods.  Arrows span MAE (left) to
+           P90 (right) on a common distance axis annotated with familiar objects.}
+  \label{fig:loc_scale}
+\end{figure}
+
+The use-case threshold analysis in Fig.~\ref{fig:loc_cdf} overlays four
+industry reference points on the cumulative error distribution:
+(i)~sub-metre accuracy required for indoor augmented-reality overlays;
+(ii)~$\leq 5\,\text{m}$ required for outdoor pedestrian turn-by-turn guidance;
+(iii)~$\leq 15\,\text{m}$ mandated by the EU E-112 emergency-call standard; and
+(iv)~$\leq 50\,\text{m}$ sufficient for neighbourhood-level network optimisation.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/loc_usecase_cdf.png}
+  \caption{Cumulative distribution of localisation error for all three fingerprinting
+           methods, annotated with real-world use-case accuracy thresholds.
+           The green band ($\leq 5\,\text{m}$) marks the pedestrian-navigation zone;
+           the orange band ($5{-}15\,\text{m}$) marks the emergency-call compliance
+           zone.}
+  \label{fig:loc_cdf}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Fingerprint Localisation Results}
+\label{sec:fp_results}
+
+The fingerprint database covers a 1.9-hectare outdoor area
+on the Otaniemi campus, sampled on a 10-metre grid
+($N = 168$ training positions, 72 test positions)
+using 9 base stations at 3.6\,GHz.
+Each fingerprint combines OFDM channel-magnitude features, time-difference of
+arrival (TDoA) features across 9 BSes, and angle-of-arrival (AoA)
+features --- 7191 dimensions in total.
+
+Table~\ref{tab:fp_results} summarises the localization performance.
+Fig.~\ref{fig:fp_comparison} shows MAE, RMSE, median and 90th-percentile error
+side by side.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Fingerprint localisation performance on the Otaniemi 100-m scene.}
+  \label{tab:fp_results}
+  \begin{tabular}{lcccc}
+    \toprule
+    Method & MAE (m) & RMSE (m) & Median (m) & P90 (m) \\
+    \midrule
+    WKNN (IDW), $k=2$ & 28.17 & 38.31 & 20.15 & 55.86 \\
+    NN Regression     & 28.31  & 32.26  & 25.93  & 52.88  \\
+    NN Classification & 74.10  & 85.76  & 71.06  & 132.78  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/loc_method_comparison.png}
+  \caption{Fingerprint localisation accuracy: MAE vs.\ RMSE (left) and median
+           vs.\ 90th-percentile error (right) for the three methods on the
+           72-sample test set.}
+  \label{fig:fp_comparison}
+\end{figure}
+
+\paragraph{Plain-language verdict.}
+\begin{itemize}
+  \item \textbf{WKNN (IDW):} MAE = 28.2\,m — coarse — sufficient for large-area coverage analytics only.
+        Provides fast inference with no training cost beyond database construction.
+  \item \textbf{NN Regression:} MAE = 28.3\,m — coarse — sufficient for large-area coverage analytics only.
+        End-to-end deep network with a continuous 2-D position output; benefits
+        from non-linear feature interactions.
+  \item \textbf{NN Classification:} MAE = 74.1\,m — coarse — sufficient for large-area coverage analytics only.
+        Maps positions to 10-m grid cells; classification accuracy
+        0.0\,\% with centroid decoding.
+\end{itemize}
+The best-performing method (\textbf{WKNN (IDW)}, MAE = 28.17\,m)
+meets the E-112 emergency-call requirement of $\leq 50\,\text{m}$ for
+85\,\% of test positions, and the pedestrian-navigation
+threshold of $\leq 5\,\text{m}$ for 4\,\% of positions.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Channel Charting}
+\label{sec:cc_results}
+
+Channel charting reduces the high-dimensional CSI fingerprint to a
+2-D \emph{radio map} without any position labels, using only the
+intrinsic geometry of the channel space.  We evaluate 12
+method--representation combinations (PCA, MDS, classical MDS, Laplacian
+Eigenmaps, Isomap, t-SNE applied to full CSI, inter-BS covariance and
+geometric features) and rank them by the Nearest-Neighbour Localisation
+Error (NNLE): the mean position error when 5-nearest chart-space neighbours
+vote on a location via inverse-distance weighting.
+
+The best channel charting method (t-SNE [RI]) achieves a k-NN localisation error of 23.1\,m, comparable to the supervised fingerprinting baseline — revealing that the radio channel structure encodes geographic position even without labels.
+
+Table~\ref{tab:cc_results} lists all methods.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Channel charting evaluation summary.}
+  \label{tab:cc_results}
+  \begin{tabular}{lcccc}
+    \toprule
+    Method \& TW ($\uparrow$) \& CT ($\uparrow$) \& KS ($\downarrow$) \& NNLE (m) \\
+    \midrule
+    PCA [RI] \& 0.672 \& 0.837 \& 0.469 \& 42.22 \\
+    PCA [Cov] \& 0.590 \& 0.799 \& 0.446 \& 51.74 \\
+    PCA [Feat] \& 1.000 \& 1.000 \& 0.000 \& 97.90 \\
+    MDS [RI] \& 0.666 \& 0.775 \& 0.259 \& 46.03 \\
+    MDS [Cov] \& 0.656 \& 0.794 \& 0.254 \& 55.67 \\
+    MDS [Feat] \& 0.035 \& 0.046 \& 0.000 \& 63.30 \\
+    CMDS [RI] \& 0.672 \& 0.837 \& 0.469 \& 42.22 \\
+    LE [RI] \& 0.593 \& 0.803 \& 1.000 \& 43.10 \\
+    Isomap [RI] \& 0.704 \& 0.881 \& 0.424 \& 39.88 \\
+    t-SNE [RI] \& 0.816 \& 0.849 \& 0.888 \& 23.14 \\
+    t-SNE [Cov] \& 0.728 \& 0.753 \& 0.522 \& 43.17 \\
+    t-SNE [Feat] \& 0.648 \& 0.251 \& 11.938 \& 66.87 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{pictures/cc_vs_fingerprinting.png}
+  \caption{Channel charting NNLE for all method--representation combinations
+           versus the supervised fingerprinting baseline (dashed line).
+           Methods below the dashed line match or exceed the unsupervised
+           baseline; methods above it still provide useful relative position
+           maps without labels.}
+  \label{fig:cc_vs_fp}
+\end{figure}
+
+\paragraph{Why channel charting matters for operators.}
+Even when GPS is unavailable and no labelled database exists --- for example,
+during network installation or after a hardware change --- a channel chart can
+be constructed from uplink CSI alone.  This is valuable for:
+(i)~\emph{initial beam management}: cluster UEs by chart proximity rather than
+     explicit location;
+(ii)~\emph{anomaly detection}: sudden chart-position shifts indicate abrupt
+     propagation changes (new obstacles, antenna failures); and
+(iii)~\emph{relative handover prediction}: UE trajectory in chart space
+     predicts impending cell-edge crossing without GPS or infrastructure
+     modifications.
+

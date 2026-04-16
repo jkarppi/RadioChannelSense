@@ -1,0 +1,83 @@
+\documentclass[journal,comsoc]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+% Visible TODO marker for draft content that still needs to be filled in.
+\newcommand{\todo}[1]{{\color{red}\textbf{[TODO:} #1\textbf{]}}}
+
+\begin{document}
+
+\title{Ray-Tracing Dataset, Fingerprint Localization and
+       Channel Charting for the Otaniemi Campus\\
+\large ELEC-E7340 --- Machine Learning for Wireless Communications D, Project work}
+\author{%
+\IEEEauthorblockN{Jari Karppinen, Hannu Flinck, Tommi Ylämurto, Aalto University}%
+}
+
+\maketitle
+
+
+\begin{abstract}
+This paper presents an end-to-end pipeline for
+(i)~\emph{generating} a spatially consistent wireless channel dataset for the
+Otaniemi campus using ray tracing, (ii)~\emph{fingerprint localization} of user
+equipments (UEs) from channel-state-information (CSI) and angular features, and
+(iii)~\emph{channel charting} of the same fingerprints using both
+conventional and neural dimensionality-reduction (DR) methods.
+The dataset is produced using MATLAB's Ray Tracing toolbox on an OpenStreetMap-derived
+3-D model of the Aalto campus, with nine rooftop base stations at 3.6\,GHz, 16-element
+sectorized BS arrays, and a $2.5$-m grid of UE positions. An independent validation
+dataset with reduced feature dimensionality (AoA, RSS, delay, LOS) is also evaluated.
+Fingerprint localization is evaluated with weighted-$k$-nearest-neighbour
+(wKNN), multilayer-perceptron (MLP) regression and classification, a
+convolutional regressor (CNN), and an MLP ensemble, reported using
+RMSE, MAE, error CDFs, and spatial error heatmaps.
+Channel charting is performed with PCA, t-SNE, an autoencoder (AE), and UMAP,
+scored by Trustworthiness~(TW), Continuity~(CT), Kolmogorov--Smirnov distance~(KS), and
+nearest-neighbour localization error (NNLE).
+On the primary test scene, the best localizer (MLP regression) attains
+$9.53\,$m MAE, and t-SNE produces the most geometrically faithful chart with
+$\mathrm{TW}=0.918$ and $\mathrm{NNLE}=8.35\,$m.
+The paper discusses dataset characteristics, metric interpretation, and the
+practical levers for improving both localization and chart quality across different ray-tracing implementations.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Ray-tracing, Channel modeling, Dataset generation, Wireless communications,
+Machine learning, Fingerprint localization, Channel charting, UMAP, t-SNE,
+Autoencoder, 5G NR, Sub-6\,GHz, Outdoor propagation.
+\end{IEEEkeywords}
+
+
+\input{sections/02-background}
+\input{sections/04-otaniemi}
+\input{sections/05-radio}
+\input{sections/06-dataset}
+\input{sections/07-evaluation}
+\input{sections/08-localization}
+\input{sections/09-channel_charting}
+
+\section{Conclusion and Future Work}
+\input{sections/10-conclusion}
+
+\appendix
+\input{sections/11-appendix}
+
+\section*{Acknowledgment}
+The authors would like to thank the course lecturer and teaching assistants
+for supporting this project, and the Aalto University School of Electrical
+Engineering for providing computational resources.
+
+\bibliographystyle{IEEEtran}
+\nocite{*}
+\bibliography{references}
+
+\end{document}

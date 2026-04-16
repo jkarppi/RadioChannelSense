@@ -1,0 +1,38 @@
+\section{Background}
+\label{sec:background}
+
+\subsection{Urban Radio Propagation}
+
+Urban radio propagation at sub-6\,GHz frequencies in outdoor environments differs
+fundamentally from purely outdoor line-of-sight propagation owing to the dense
+arrangement of buildings and other scatterers that give rise to a rich multipath
+environment~\cite{rappaport2013millimeter}.
+The dominant propagation mechanisms in urban micro-cells are specular reflection
+from building facades, diffraction at building edges and corners, and transmission
+through exterior walls, each of which is governed by the frequency-dependent
+electromagnetic properties of the building materials present~\cite{itu_p2040}.
+These effects collectively determine the key channel descriptors used in system
+design---most notably the root-mean-square (RMS) delay spread, the angular spread of
+arrival and departure, and the aggregate path loss~\cite{3gpp_nr_channel}.
+Accurate characterisation of such parameters is a prerequisite for designing link
+budgets, dimensioning cyclic-prefix lengths in OFDM transmission, and exploiting
+spatial multiplexing with multi-antenna systems~\cite{dahlman2018_5gnr}.
+
+\subsection{Ray-Tracing Methods for Channel Modelling}
+
+Ray-tracing (RT) is a deterministic propagation modelling technique that predicts
+multipath channel characteristics by simulating the geometric and electromagnetic
+interactions of a set of rays launched from a transmitting antenna with the surfaces
+of a three-dimensional scene~\cite{yun2015ray}.
+Compared with stochastic geometry-based models such as those specified in
+3GPP~TR~38.901~\cite{3gpp_nr_channel}, RT methods directly exploit site-specific
+scene and material information, making them particularly well-suited to the
+reproduction and analysis of physically realistic channel propagation in urban environments.
+
+\textbf{MATLAB Ray Tracing Toolbox} is employed in this work to generate the wireless
+channel dataset using geometric optics ray tracing with configurable path-tracing parameters
+(reflections, diffractions, frequency). The ray-tracing simulation is applied to an
+OpenStreetMap-based three-dimensional model of the urban Otaniemi campus with material
+properties assigned to building components, producing physically realistic multipath
+channel characteristics for both localization and channel-charting applications.
+

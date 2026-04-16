@@ -1,0 +1,30 @@
+\begin{table}
+\caption{Mitsuba dataset structure (HDF5)}
+\label{tab:mitsuba_dataset}
+\begin{tabular}{lll}
+\toprule
+Path & Shape & DType \\
+\midrule
+CIR/a\_imag & (444,) & float64 \\
+CIR/a\_real & (444,) & float64 \\
+CIR/tau\_ns & (444,) & float64 \\
+CIR/tau\_s & (444,) & float64 \\
+frequency\_domain/H\_gain\_dB & (3168,) & float64 \\
+frequency\_domain/H\_imag & (3168,) & float64 \\
+frequency\_domain/H\_magnitude & (3168,) & float64 \\
+frequency\_domain/H\_phase\_deg & (3168,) & float64 \\
+frequency\_domain/H\_real & (3168,) & float64 \\
+frequency\_domain/subcarrier\_freq\_Hz & (3168,) & float64 \\
+locations/bs\_position & (3,) & float64 \\
+locations/ue\_positions & (1, 3) & float64 \\
+paths/amplitude\_abs & (444,) & float64 \\
+paths/az\_aoa\_deg & (444,) & float64 \\
+paths/az\_aod\_deg & (444,) & float64 \\
+paths/channel\_gain\_dB & (444,) & float64 \\
+paths/channel\_gain\_linear & (444,) & float64 \\
+paths/delay\_ns & (444,) & float64 \\
+paths/el\_aoa\_deg & (444,) & float64 \\
+paths/el\_aod\_deg & (444,) & float64 \\
+\bottomrule
+\end{tabular}
+\end{table}

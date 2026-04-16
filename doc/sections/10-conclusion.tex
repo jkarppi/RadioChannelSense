@@ -1,0 +1,70 @@
+\label{sec:conclusion}
+
+This paper presented an end-to-end methodology for wireless channel dataset
+generation, fingerprint localization, and channel charting on the Otaniemi
+campus.
+A cropped $132\,\text{m}\times 147\,\text{m}$ sub-region of the Aalto
+School of Electrical Engineering was instrumented with nine rooftop
+5G NR~Band~n78 sites ($f_c = 3.6\,\text{GHz}$,
+$4\times4$ antennas per BS), and a $2.5\,\text{m}$ UE grid with
+3\,069 valid positions.
+The wireless channel dataset was generated using MATLAB's Ray Tracing
+toolbox with configurable path-tracing parameters (reflections, diffractions, frequency)
+to produce physically realistic multipath channel characteristics for both
+localization and channel-charting applications.
+
+The resulting fingerprint matrices were used in two complementary ways.
+A $3\,069 \times 63$ MATLAB-derived fingerprint matrix (with AoA, RSS, delay, and LOS features)
+generated from MATLAB ray-tracing and processed in Python served as an independent
+validation dataset.
+For \emph{fingerprint localization} (Section~\ref{sec:localization}),
+six estimators were benchmarked on the MATLAB-derived dataset under a 70\,\%/30\,\% train/test split;
+wKNN with coarse-to-fine refinement and MLP regression reached comparable performance
+($\text{MAE} \approx 18\,\text{m}$), demonstrating the robustness of fingerprinting
+across different ray-tracing implementations and feature representations.
+A classification head on the same grid failed because the cell count
+exceeded the number of training samples --- a clear demonstration of
+why regression is preferable to classification for dense grids.
+For \emph{channel charting} (Section~\ref{sec:channel_charting}), four
+DR methods (PCA, t-SNE, autoencoder, UMAP) were scored with
+TW/CT/KS/NNLE on both the Otaniemi\_small and MATLAB-derived datasets;
+t-SNE produced strong unsupervised maps on both datasets, with
+$\text{TW}=0.918$, $\text{CT}=0.958$ on Otaniemi\_small and $\text{TW}=0.975$, $\text{CT}=0.945$
+on the MATLAB-derived dataset --- comparable to the best supervised regressor without
+using any UE labels.
+
+Overall the Otaniemi campus testbed, validated through independent MATLAB ray-tracing
+simulation, is a useful mid-scale environment: large enough to produce
+non-trivial NLOS structure that stresses both the localizer and the chart, yet tractable
+for CPU-only processing.
+The main limitations observed were (i) the dominant geometric ambiguity
+in the shadow regions behind large facades, which inflates the tail of
+the localization error CDF across both datasets; (ii) the reduced feature
+dimensionality in the MATLAB-derived feature vector (63 dimensions: AoA, RSS, delay, LOS)
+compared to full CSI fingerprints, which limits performance for data-hungry models;
+and (iii) the limited number of grid samples for deep learning models such
+as the plain MSE autoencoder.
+
+\subsection*{Future Work}
+
+Several follow-on directions are natural.
+First, the fingerprint vector currently uses only amplitude-domain
+features; incorporating the per-path AoA/AoD angles already available in
+the HDF5 dataset is expected to sharpen both the localizer and the
+chart~\cite{hoydis2023sionna_rt,3gpp_nr_channel}.
+Second, replacing the plain-MSE autoencoder with a
+Siamese/triplet-loss AE~\cite{lei2019siamese_cc} would give the latent
+space an explicit metric-preservation objective and should close most of
+the gap to t-SNE.
+Third, extending the scene size --- by reverting to the full 77-building
+Otaniemi model once a GPU host is available --- would capture more
+propagation diversity and enable multi-point channel charting across
+adjacent cells.
+Fourth, a semi-supervised channel-chart formulation, in which a small
+subset of labelled anchors regularises the latent space, is a direct
+avenue for the extra-credit item in the course
+assignment~\cite{studer2018channel_charting}.
+Finally, closing the loop by using the chart as an input to a
+beam-management or handover policy would demonstrate the practical
+utility of the learned radio-space embedding for real 5G/beyond-5G
+systems~\cite{sionna2022}.
